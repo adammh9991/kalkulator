@@ -12,14 +12,16 @@
 	<h1>Kalkulator kredytu</h1>
 
 	<h:form id="bla">
-  		Kwota kredytu: <h:inputText value="#{calcBB.x}" />
+  		Kwota kredytu: <h:inputText value="#{kalkulatorBB.x}" />
 		<br />
-  		Rata: <h:inputText value="#{calcBB.y}" />
+  		Ilość lat: <h:inputText value="#{kalkulatorBB.y}" />
+		<br />
+		Oprocentowanie: <h:inputText value="#{kalkulatorBB.z}" />
 		<br />
 		<h:messages id="msg" />
 
-		<h:commandButton value="Oblicz" action="#{calcBB.calc()}"/>
-		<h:commandLink value="Informacje" action="#{calcBB.info()}" />
+		<h:commandButton value="Oblicz" action="#{kalkulatorBB.calc()}"/>
+		
 	</h:form>
 
 </h:body>

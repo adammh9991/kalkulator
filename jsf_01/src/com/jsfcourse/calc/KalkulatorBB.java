@@ -10,9 +10,10 @@ import javax.faces.context.FacesContext;
 @Named
 @RequestScoped
 //@SessionScoped
-public class CalcBB {
+public class KalkulatorBB {
 	private String x;
 	private String y;
+	private String z;
 	private Double result;
 
 	@Inject
@@ -33,6 +34,15 @@ public class CalcBB {
 	public void setY(String y) {
 		this.y = y;
 	}
+	
+	public String getZ() {
+		return z;
+	}
+
+	public void setZ(String z) {
+		this.z = z;
+	}
+
 
 	public Double getResult() {
 		return result;
@@ -46,8 +56,10 @@ public class CalcBB {
 		try {
 			double x = Double.parseDouble(this.x);
 			double y = Double.parseDouble(this.y);
-
-			result = x + y;
+			double z = Double.parseDouble(this.z);
+			z = z / 100;
+			z = x / (y*12) * z;
+			result =  x / (y*12) + z;
 
 			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Operacja wykonana poprawnie", null));
 			return true;
@@ -66,15 +78,7 @@ public class CalcBB {
 		return null;
 	}
 
-	// Put result in messages on AJAX call
-	public String calc_AJAX() {
-		if (doTheMath()) {
-			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Wynik: " + result, null));
-		}
-		return null;
-	}
 
-	public String info() {
-		return "info";
-	}
+
+
 }
