@@ -34,7 +34,7 @@ public class KalkulatorBB {
 	public void setY(String y) {
 		this.y = y;
 	}
-	
+
 	public String getZ() {
 		return z;
 	}
@@ -42,7 +42,6 @@ public class KalkulatorBB {
 	public void setZ(String z) {
 		this.z = z;
 	}
-
 
 	public Double getResult() {
 		return result;
@@ -58,8 +57,8 @@ public class KalkulatorBB {
 			double y = Double.parseDouble(this.y);
 			double z = Double.parseDouble(this.z);
 			z = z / 100;
-			z = x / (y*12) * z;
-			result =  x / (y*12) + z;
+			z = x / (y * 12) * z;
+			result = x / (y * 12) + z;
 
 			ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Operacja wykonana poprawnie", null));
 			return true;
@@ -77,8 +76,5 @@ public class KalkulatorBB {
 		}
 		return null;
 	}
-
-
-
 
 }

@@ -3,26 +3,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Kalkulator kredytu</title>
 </h:head>
 <h:body>
 
-	<h1>Kalkulator kredytu</h1>
 
-	<h:form id="bla">
-  		Kwota kredytu: <h:inputText value="#{kalkulatorBB.x}" />
-		<br />
-  		Ilość lat: <h:inputText value="#{kalkulatorBB.y}" />
-		<br />
-		Oprocentowanie: <h:inputText value="#{kalkulatorBB.z}" />
-		<br />
-		<h:messages id="msg" />
+	<p:panel id="toggleable" header="Kalkulator kredytu" toggleable="true"
+		closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel"
+		style="margin-bottom:20px">
+		<h:form id="bla">
+			<h:panelGrid id="grid" columns="3" cellpadding="5">
 
-		<h:commandButton value="Oblicz" action="#{kalkulatorBB.calc()}"/>
-		
-	</h:form>
+				<h:outputText for="kwota" value="Kwota kredytu :" />
+				<p:inputText id="kwota" value="#{kalkulatorBB.x}" required="true" requiredMessage="Brak wartości Kwota kredytu" />
+				<p:messages for="kwota" />
 
+				<h:outputText for="lata" value="Ilość lat :" />
+				<p:inputText id="lata" value="#{kalkulatorBB.y}" required="true" requiredMessage="Brak wartości Ilość lat" />
+				<p:messages for="lata" />
+
+				<h:outputText for="procent" value="Oprocentowanie :" />
+				<p:inputText id="procent" value="#{kalkulatorBB.z}" required="true" requiredMessage="Brak wartości Oprocentowanie" />
+				<p:messages for="procent" />
+
+
+				<p:commandButton value="Oblicz" action="#{kalkulatorBB.calc()}" update="@form" icon="fa fa-check" />
+
+			</h:panelGrid>
+			<p:messages id="msg" />
+		</h:form>
+	</p:panel>
 </h:body>
 </html>
