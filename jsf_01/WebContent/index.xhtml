@@ -13,27 +13,55 @@
 
 	<p:panel id="toggleable" header="Kalkulator kredytu" toggleable="true"
 		closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel"
-		style="margin-bottom:20px">
+		style="margin-bottom:20px;">
+
 		<h:form id="bla">
+
 			<h:panelGrid id="grid" columns="3" cellpadding="5">
 
 				<h:outputText for="kwota" value="Kwota kredytu :" />
-				<p:inputText id="kwota" value="#{kalkulatorBB.x}" required="true" requiredMessage="Brak wartości Kwota kredytu" />
+					<p:inputText id="kwota" value="#{kalkulatorBB.x}" required="true"
+						requiredMessage="Brak wartości Kwota kredytu" 
+						converterMessage="Wartość musi być numeryczna"
+						validatorMessage="Minimalna kwota kredytu to 50000">
+					
+						<f:validateLongRange minimum="50000"/>
+					</p:inputText>
 				<p:messages for="kwota" />
 
 				<h:outputText for="lata" value="Ilość lat :" />
-				<p:inputText id="lata" value="#{kalkulatorBB.y}" required="true" requiredMessage="Brak wartości Ilość lat" />
+					<p:inputText id="lata" value="#{kalkulatorBB.y}" required="true"
+						requiredMessage="Brak wartości Ilość lat"
+						converterMessage="Wartość musi być numeryczna" 
+						validatorMessage="Minimalna ilość lat to 5">
+					
+						<f:validateLongRange minimum="5"/>
+					</p:inputText>
 				<p:messages for="lata" />
 
 				<h:outputText for="procent" value="Oprocentowanie :" />
-				<p:inputText id="procent" value="#{kalkulatorBB.z}" required="true" requiredMessage="Brak wartości Oprocentowanie" />
+					<p:inputText id="procent" value="#{kalkulatorBB.z}" required="true"
+						requiredMessage="Brak wartości Oprocentowanie"
+						converterMessage="Wartość musi być numeryczna" 
+						validatorMessage="Minimalna oprocentowanie to 0.5">
+					
+						<f:validateDoubleRange minimum="0.5" maximum="10"/>					
+					</p:inputText>
 				<p:messages for="procent" />
+				
+			<h:panelGrid id="grid2" columns="1" cellpadding="5">
 
+					<p:clock pattern="HH:mm:ss dd.MM.yyyy" mode="server" />
 
-				<p:commandButton value="Oblicz" action="#{kalkulatorBB.calc()}" update="@form" icon="fa fa-check" />
-
+					<p:commandButton value="Oblicz" action="#{kalkulatorBB.calc()}"
+						update="@form" icon="fa fa-check" />
+						
+						
 			</h:panelGrid>
-			<p:messages id="msg" />
+
+				
+			</h:panelGrid>
+
 		</h:form>
 	</p:panel>
 </h:body>

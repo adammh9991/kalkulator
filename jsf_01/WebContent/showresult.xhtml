@@ -9,8 +9,19 @@
 	<title>Wynik</title>
 </h:head>
 <h:body>
-	<p:messages />
-	Ilość rat: #{kalkulatorBB.result}
+	<p:panel id="toggleable" header="Wynik" toggleable="true"
+		closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel"
+		style="margin-bottom:20px;">
+
+		<p:messages />
+		<h:panelGrid id="grid" columns="1" cellpadding="5">
+
+			<h:outputText value="Wartość raty : #{kalkulatorBB.result}" />
+
+		
+		</h:panelGrid>
+	</p:panel>
+	
 	<h:form>
 		<p:commandButton value="Powrót" action="index" />
 	</h:form>
